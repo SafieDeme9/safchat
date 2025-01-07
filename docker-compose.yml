@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  safchat:
+    build:
+      context: .
+    env_file:
+      - .env
+    command: python main.py
