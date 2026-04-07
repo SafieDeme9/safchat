@@ -1,0 +1,304 @@
+{
+  "proverbs": [
+    {
+      "italian": "Ambasciator non porta pena",
+      "english": "Don't shoot the messenger",
+      "french": "Ne tirez pas sur le messager",
+      "meaning": "Someone delivering bad or unpleasant news on behalf of others isn't responsible and shouldn't be blamed."
+    },
+    {
+      "italian": "Cane che abbaia non morde",
+      "english": "A barking dog doesn't bite",
+      "french": "Chien qui aboie ne mord pas",
+      "meaning": "Those who make many threats often don't follow through with them."
+    },
+    {
+      "italian": "Fidarsi è bene ma non fidarsi è meglio",
+      "english": "Trust is good, but being cautious is better",
+      "french": "Faire confiance est bien, mais ne pas faire confiance est mieux",
+      "meaning": "While trust is vital, it's wise not to be overly naive."
+    },
+    {
+      "italian": "Chi si volta, e chi si gira, sempre a casa va finire",
+      "english": "No matter where you turn or roam, you'll always end up at home",
+      "french": "Où que vous vous tourniez, vous finirez toujours par rentrer chez vous",
+      "meaning": "No matter how far we wander, we will eventually find our way back home."
+    },
+    {
+      "italian": "Finché c'è vita, c'è speranza",
+      "english": "As long as there's life, there's hope",
+      "french": "Tant qu'il y a de la vie, il y a de l'espoir",
+      "meaning": "Never lose hope, even in challenging situations."
+    },
+    {
+      "italian": "Non si può avere la botte piena e la moglie ubriaca",
+      "english": "You can't have a barrel full of wine and a drunk wife simultaneously",
+      "french": "On ne peut pas avoir le beurre et l'argent du beurre",
+      "meaning": "Sometimes you must sacrifice one thing to gain another."
+    },
+    {
+      "italian": "Chi nasce tondo non può morir quadrato",
+      "english": "Those who are born round can't die square",
+      "french": "Chien qui naît rond ne meurt pas carré",
+      "meaning": "Breaking bad habits is difficult and can be nearly impossible."
+    },
+    {
+      "italian": "A caval donato non si guarda in bocca",
+      "english": "Don't look a gift horse in the mouth",
+      "french": "À cheval donné, on ne regarde pas la bouche",
+      "meaning": "Don't criticize what you've been given."
+    },
+    {
+      "italian": "L'abito non fa il monaco",
+      "english": "You can't judge a book by its cover",
+      "french": "L'habit ne fait pas le moine",
+      "meaning": "Don't make assumptions based on appearances alone."
+    },
+    {
+      "italian": "Il fine giustifica i mezzi",
+      "english": "The end justifies the means",
+      "french": "La fin justifie les moyens",
+      "meaning": "If the goal is noble, one shouldn't worry about the methods used."
+    },
+    {
+      "italian": "Meglio tardi che mai",
+      "english": "Better late than never",
+      "french": "Mieux vaut tard que jamais",
+      "meaning": "It's better to complete something late than not do it at all."
+    },
+    {
+      "italian": "Le bugie hanno le gambe corte",
+      "english": "Lies have short legs",
+      "french": "Les mensonges ont les jambes courtes",
+      "meaning": "Lies can't travel far or last long."
+    },
+    {
+      "italian": "Ogni lasciata è persa",
+      "english": "Everything left is lost",
+      "french": "Ce qui est laissé est perdu",
+      "meaning": "Seize opportunities when they arise."
+    },
+    {
+      "italian": "Parlare come un libro stampato",
+      "english": "To speak like a printed book",
+      "french": "Parler comme un livre imprimé",
+      "meaning": "Someone who uses language correctly and appropriately."
+    },
+    {
+      "italian": "Piove sempre sul bagnato",
+      "english": "It always rains on the wet",
+      "french": "Il pleut toujours sur le mouillé",
+      "meaning": "Misfortune (or good fortune) tends to follow the unlucky (or lucky)."
+    },
+    {
+      "italian": "Occhio non vede, cuore non duole",
+      "english": "What the eye doesn't see, the heart doesn't grieve",
+      "french": "Ce que l'œil ne voit pas, le cœur ne souffre pas",
+      "meaning": "If you're unaware of something undesirable, you won't suffer from it."
+    },
+    {
+      "italian": "La notte porta consiglio",
+      "english": "Night brings advice",
+      "french": "La nuit porte conseil",
+      "meaning": "Sleep on challenging decisions and make choices with a clear mind."
+    },
+    {
+      "italian": "O mangi questa minestra o salti questa finestra",
+      "english": "Either eat this soup or jump out of this window",
+      "french": "Il faut en passer par là",
+      "meaning": "Sometimes you must choose between accepting a situation or facing consequences."
+    },
+    {
+      "italian": "Chi si fa i fatti suoi campa 100 anni",
+      "english": "Who wants to live longer should mind his own business",
+      "french": "Qui s'occupe de ses affaires vit cent ans",
+      "meaning": "Staying out of other people's affairs leads to a happier, longer life."
+    },
+    {
+      "italian": "Paese che vai usanze che trovi",
+      "english": "Every country you visit has different customs",
+      "french": "À chaque pays ses coutumes",
+      "meaning": "Promotes tolerance and understanding of other cultures."
+    },
+    {
+      "italian": "Meglio soli che male accompagnati",
+      "english": "Better alone than in bad company",
+      "french": "Mieux vaut être seul que mal accompagné",
+      "meaning": "It's better to be alone than with someone who negatively impacts you."
+    },
+    {
+      "italian": "De gustibus non disputandum est",
+      "english": "Tastes differ",
+      "french": "Des goûts et des couleurs, on ne discute pas",
+      "meaning": "Respect and be tolerant of others' preferences."
+    },
+    {
+      "italian": "Tentar non nuoce",
+      "english": "There's no harm in trying",
+      "french": "Il n'y a pas de mal à essayer",
+      "meaning": "Valuable lessons can be learned even if an attempt fails."
+    },
+    {
+      "italian": "L'ospite è come il pesce dopo tre giorni puzza",
+      "english": "A guest is like a fish that, after three days, stinks",
+      "french": "Le poisson et l'hôte deviennent mauvais au bout de trois jours",
+      "meaning": "Having guests stay for too long can become overwhelming."
+    },
+    {
+      "italian": "Non dire gatto se non ce l'hai nel sacco",
+      "english": "Don't say cat if you don't have it in the bag",
+      "french": "Il ne faut pas vendre la peau de l'ours avant de l'avoir tué",
+      "meaning": "Don't count your chickens before they hatch."
+    },
+    {
+      "italian": "Una buona giornata comincia al mattino",
+      "english": "A good day starts in the morning",
+      "french": "Une bonne journée commence le matin",
+      "meaning": "Starting each day positively sets the tone for the rest of the day."
+    },
+    {
+      "italian": "Chi ben comincia è a metà dell'opera",
+      "english": "He who begins well is half done",
+      "french": "Bien commencer est la moitié de l'œuvre",
+      "meaning": "A strong beginning lays the foundation for successful completion."
+    },
+    {
+      "italian": "L'erba del vicino è sempre più verde",
+      "english": "The grass isn't always greener on the other side",
+      "french": "L'herbe du voisin est toujours plus verte",
+      "meaning": "We often believe others are in a better situation, even if that's not true."
+    },
+    {
+      "italian": "Mal comune mezzo gaudio",
+      "english": "Shared trouble, shared joy",
+      "french": "Mal partagé est à moitié guéri",
+      "meaning": "Sharing your problems makes them seem less daunting."
+    },
+    {
+      "italian": "Troppi cuochi guastano la cucina",
+      "english": "Too many cooks spoil the broth",
+      "french": "Trop de cuisiniers gâtent la sauce",
+      "meaning": "Involving too many people in a task results in confusion."
+    },
+    {
+      "italian": "Chi ha tempo non aspetti tempo",
+      "english": "Who has time shouldn't wait for time",
+      "french": "Qui a temps n'attende pas",
+      "meaning": "Don't procrastinate; tackle tasks today instead of putting them off."
+    },
+    {
+      "italian": "Il mattino ha l'oro in bocca",
+      "english": "The morning has gold in its mouth",
+      "french": "Le matin a de l'or dans la bouche",
+      "meaning": "Start your day early to make the most of it."
+    },
+    {
+      "italian": "Chi va piano, va sano e va lontano",
+      "english": "He who goes slowly, goes safely and goes far",
+      "french": "Qui va doucement, va sainement et va loin",
+      "meaning": "Patience and perseverance lead to long-term success."
+    },
+    {
+      "italian": "Mangia bene, ridi spesso, ama molto",
+      "english": "Eat well, laugh often, love much",
+      "french": "Mange bien, ris souvent, aime beaucoup",
+      "meaning": "Enjoy life's simple pleasures for a fulfilling and joyful life."
+    },
+    {
+      "italian": "Forza e coraggio che la vita è un passaggio",
+      "english": "Strength and courage, for life is a passage",
+      "french": "Force et courage, car la vie est un passage",
+      "meaning": "Face life's challenges with resilience and determination."
+    },
+    {
+      "italian": "Ride bene chi ride ultimo",
+      "english": "He who laughs last laughs best",
+      "french": "Qui rit le dernier rit le mieux",
+      "meaning": "True victory is often determined at the end."
+    },
+    {
+      "italian": "Ogni scarrafone è bello a mamma soja",
+      "english": "Every cockroach is beautiful to its mother",
+      "french": "Chaque cafard est beau à sa mère",
+      "meaning": "Someone excessively proud of their creations, no matter how flawed."
+    },
+    {
+      "italian": "Chi dorme non piglia pesci",
+      "english": "Those who sleep don't catch fish",
+      "french": "Qui dort n'attrape pas de poisson",
+      "meaning": "Success requires effort and proactiveness."
+    },
+    {
+      "italian": "Tra il dire e il fare c'è di mezzo il mare",
+      "english": "Talk is cheap",
+      "french": "Entre dire et faire, il y a la mer",
+      "meaning": "Actions speak louder than words."
+    },
+    {
+      "italian": "L'appetito vien mangiando",
+      "english": "Appetite comes with eating",
+      "french": "L'appétit vient en mangeant",
+      "meaning": "Motivation grows as you engage in an activity."
+    },
+    {
+      "italian": "A volte non si può avere tutto",
+      "english": "Sometimes you can't have it all",
+      "french": "Parfois on ne peut pas tout avoir",
+      "meaning": "You cannot always obtain everything you desire."
+    },
+    {
+      "italian": "La vita è fatta a scale: c'è chi scende e c'è chi sale",
+      "english": "Life is like a staircase: some go up, and some go down",
+      "french": "La vie est comme un escalier: certains montent, d'autres descendent",
+      "meaning": "Everyone experiences successes and failures."
+    },
+    {
+      "italian": "Chi non lavora, non fa l'amore",
+      "english": "He who does not work does not make love",
+      "french": "Qui ne travaille pas ne fait pas l'amour",
+      "meaning": "Hard work is essential for success in all areas of life."
+    },
+    {
+      "italian": "Chi trova un amico, trova un tesoro",
+      "english": "He who finds a friend finds a treasure",
+      "french": "Qui trouve un ami trouve un trésor",
+      "meaning": "True friends are invaluable and should be cherished."
+    },
+    {
+      "italian": "Chi non risica non rosica",
+      "english": "He who does not risk does not get the rose",
+      "french": "Qui ne risque rien n'a rien",
+      "meaning": "Take risks and be courageous in uncertainty."
+    },
+    {
+      "italian": "Chi troppo vuole nulla stringe",
+      "english": "Grasp all, lose all",
+      "french": "Qui trop embrasse mal étreint",
+      "meaning": "Focusing on too many goals can lead to failure."
+    },
+    {
+      "italian": "Non tutto quel che luccica è oro",
+      "english": "All that glitters is not gold",
+      "french": "Tout ce qui brille n'est pas or",
+      "meaning": "Not everything that seems valuable is genuine."
+    },
+    {
+      "italian": "Chi la dura, la vince",
+      "english": "The one who perseveres wins it",
+      "french": "Qui persévère gagne",
+      "meaning": "Persistence and determination lead to success."
+    },
+    {
+      "italian": "La calma è la virtù dei forti",
+      "english": "Calmness is the virtue of the strong",
+      "french": "Le calme est la vertu des forts",
+      "meaning": "True strength is shown through maintaining composure."
+    },
+    {
+      "italian": "Il mondo è bello perché è vario",
+      "english": "The world is beautiful because it's varied",
+      "french": "Le monde est beau parce qu'il est varié",
+      "meaning": "Diversity and differences make life exciting and beautiful."
+    }
+  ]
+}
