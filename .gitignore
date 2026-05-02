@@ -1,1 +1,16 @@
 .env
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.vscode/
+.DS_Store
+bin/
+lib/
+lib64
+share/
+pyvenv.cfg
+*.swp
+*.swo
+*~
+docker-compose.override.yml

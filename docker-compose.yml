@@ -1,8 +1,31 @@
-version: "3.8"
+version: '3.8'
+
 services:
-  safchat:
-    build:
-      context: .
+  ollama:
+    image: ollama/ollama:0.3.12-linux-arm64
+    container_name: italian-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./ollama-entrypoint.sh:/entrypoint.sh
+    entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
+    restart: unless-stopped
+    mem_limit: 3.5g
+    cpus: 3
+
+  bot:
+    build: .
+    container_name: italian-bot
     env_file:
       - .env
-    command: python main.py
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      ollama:
+        condition: service_started
+    restart: unless-stopped
+    mem_limit: 512m
+
+volumes:
+  ollama_data:
