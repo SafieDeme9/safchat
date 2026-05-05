@@ -24,12 +24,14 @@ else
     echo "✅ Token configured"
 fi
 
-# Install requirements if needed
+# Create virtual environment if needed
 if [ ! -d "venv" ]; then
+    echo "📦 Creating virtual environment..."
+    $PYTHON -m venv venv
     echo "📦 Installing dependencies..."
-    $PYTHON -m pip install -r requirements.txt
+    venv/bin/pip install -r requirements.txt
 fi
 
 # Run the bot
 echo "🤖 Starting bot..."
-$PYTHON main.py
+venv/bin/python main.py
