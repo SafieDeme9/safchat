@@ -15,7 +15,7 @@ done
 
 # Pull the model (only if not already present)
 # qwen2.5:0.5b = ultra-lightweight, ~400MB, works great on RPi 4
-MODEL="${OLLAMA_MODEL:-qwen2.5:0.5b}"
+MODEL="${OLLAMA_MODEL:-${MODEL_NAME:-qwen2.5:0.5b}}"
 echo "📦 Using model: $MODEL"
 if ! ollama list | grep -q "$MODEL"; then
     echo "📥 Pulling $MODEL (this may take a few minutes on first run)..."

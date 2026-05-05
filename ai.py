@@ -132,55 +132,21 @@ class Ollama:
         except Exception as e:
             return f"❌ Error: {str(e)[:100]}"
     
-    def translate(self, text, source_lang='English'):
-        """Translate English or French to Italian"""
-        prompt = f"Translate this {source_lang} text to Italian. Only respond with the translation, nothing else.\n\nText: {text}"
-        system = "You are a translator. Reply with ONLY the Italian translation, no explanations."
-        return self.chat(prompt, system)
-    
-    def correct_italian(self, text, user_language='en'):
-        """Correct Italian grammar and spelling mistakes"""
-        prompt = f"""Correct the Italian sentence below. 
-Return your response in this exact format:
-
-✅ Corrected: [corrected sentence]
-📝 Explanation: [brief explanation of the main error]
-
-Italian sentence to correct: {text}"""
-        
-        system = "You are an Italian language teacher. Correct grammar and spelling mistakes. Keep explanations short (one sentence)."
-        return self.chat(prompt, system)
-    
-    def converse(self, text, user_language='en', user_id=None):
-        """Have a conversation in Italian (tutor mode)"""
-        prompt = f"""The user wrote in Italian: "{text}"
-
-Do the following:
-1. If there are grammar mistakes, correct them gently
-2. Respond naturally in Italian
-3. Keep your response to 1-2 sentences
-4. Ask a simple follow-up question to continue the conversation"""
-        
-        system = """You are a friendly Italian tutor. Have a natural conversation in Italian.
-Correct mistakes gently. Respond in Italian only.
-Keep it simple for learners."""
-        
-        return self.chat(prompt, system, user_id)
-    
     def process_message(self, text, user_language='en', user_id=None):
-        """Smart router - decides if user needs translation, correction, or conversation"""
-        # Check if user is trying to speak Italian (simple detection)
-        italian_words = ['mi piace', 'ciao', 'grazie', 'buongiorno', 'come stai', 'sono', 'ho', 'e']
-        is_italian = any(word in text.lower() for word in italian_words)
-        
-        if is_italian:
-            # User is trying Italian - provide correction and conversation
-            if DEBUG:
-                print(f"🇮🇹 Italian detected - correcting and conversing")
-            return self.converse(text, user_language, user_id)
-        else:
-            # User is speaking English/French - translate
-            source = 'English' if user_language == 'en' else 'French'
-            if DEBUG:
-                print(f"🌐 {source} detected - translating to Italian")
-            return self.translate(text, source)
+        """Let the model decide: translate if EN/FR, correct+converse if Italian"""
+        native = 'English' if user_language == 'en' else 'French'
+
+        system = (
+            "You are a friendly Italian language tutor. "
+            "If the user writes in English or French, translate their message to Italian. "
+            "If the user writes in Italian, correct any grammar mistakes gently "
+            "and reply naturally in Italian (1-2 sentences, ask a follow-up question). "
+            "Always respond in Italian only. Keep corrections brief and encouraging."
+        )
+
+        user_msg = f"[The user's native language is {native}]\n\n{text}"
+
+        if DEBUG:
+            print(f"📨 [{user_id}] {text[:80]}")
+
+        return self.chat(user_msg, system, user_id)

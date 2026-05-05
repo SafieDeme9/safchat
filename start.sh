@@ -14,11 +14,14 @@ else
 fi
 
 # Check if token is set
-if ! grep -q "TELEGRAM_TOKEN" .env; then
-    echo "✅ Token seems configured"
-else
-    echo "❌ Please set your TELEGRAM_TOKEN in .env"
+if grep -q "^TELEGRAM_TOKEN=YOUR_TELEGRAM_BOT_TOKEN_HERE" .env 2>/dev/null; then
+    echo "❌ Please set your TELEGRAM_TOKEN in .env (still has placeholder value)"
     exit 1
+elif ! grep -q "^TELEGRAM_TOKEN=" .env 2>/dev/null; then
+    echo "❌ TELEGRAM_TOKEN not found in .env"
+    exit 1
+else
+    echo "✅ Token configured"
 fi
 
 # Install requirements if needed

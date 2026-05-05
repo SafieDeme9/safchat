@@ -1,13 +1,16 @@
 import os
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Set to False on Raspberry Pi for production
 DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
 
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN', 'bot_token')
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN', '')
 OLLAMA_HOST = os.getenv('OLLAMA_HOST', 'http://localhost:11434')
-# Use an ultra-lightweight model suitable for Raspberry Pi 4 (4GB RAM)
-# qwen2.5:0.5b = 0.5B params, ~400MB download, ~500-600MB RAM at inference
-MODEL_NAME = os.getenv('MODEL_NAME', 'qwen2.5:0.5b')
+MODEL_NAME = os.getenv('MODEL_NAME', os.getenv('OLLAMA_MODEL', 'qwen2.5:0.5b'))
+
+if not TELEGRAM_TOKEN or TELEGRAM_TOKEN == 'YOUR_TELEGRAM_BOT_TOKEN_HERE':
+    print("❌ ERROR: TELEGRAM_TOKEN is not set!")
+    print("   Copy .env.example to .env and add your bot token from @BotFather")
+    sys.exit(1)
