@@ -14,3 +14,4 @@ pyvenv.cfg
 *.swo
 *~
 docker-compose.override.yml
+ssh_github*
