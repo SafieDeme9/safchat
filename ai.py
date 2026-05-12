@@ -22,21 +22,25 @@ class Ollama:
                 print(f"⚠️ Ollama not reachable at {self.host}")
     
     def _check(self):
-        """Check if Ollama server is reachable"""
+        """Check if Ollama server is reachable. Updates self.ready."""
         try:
-            r = requests.get(f"{self.host}/api/tags", timeout=5)
-            return r.status_code == 200
+            r = requests.get(f"{self.host}/api/tags", timeout=10)
+            if r.status_code == 200:
+                self.ready = True
+                return True
+            return False
         except:
             return False
     
     def _check_model(self):
-        """Check if the specific model is available in Ollama"""
+        """Check if the specific model is available in Ollama. Updates self.model_ready."""
         try:
-            r = requests.get(f"{self.host}/api/tags", timeout=5)
+            r = requests.get(f"{self.host}/api/tags", timeout=10)
             if r.status_code == 200:
                 models = r.json().get('models', [])
                 for m in models:
                     if self.model in m.get('name', ''):
+                        self.model_ready = True
                         return True
             return False
         except:
@@ -68,7 +72,14 @@ class Ollama:
     def chat(self, prompt, system=None, user_id=None):
         """General chat with optional conversation memory"""
         if not self.ready:
-            return "⏳ AI server is starting... please wait 60 seconds and try again"
+            if DEBUG:
+                print("🔄 Ollama not ready on init — trying to reconnect...")
+            if self._check():
+                if DEBUG:
+                    print("✅ Ollama reconnected")
+                self.model_ready = self._check_model()
+            else:
+                return "⏳ AI server is starting... please wait 60 seconds and try again"
         
         # Try to ensure model is available (non-blocking for first use)
         if not self.model_ready:
