@@ -1,35 +1,7 @@
 services:
-  ollama:
-    image: ollama/ollama:0.3.12
-    container_name: italian-ollama
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-      - ./ollama-entrypoint.sh:/entrypoint.sh
-    entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
-    restart: unless-stopped
-    mem_limit: 3.5g
-    cpus: 3
-    healthcheck:
-      test: ["CMD", "ollama", "list"]
-      interval: 10s
-      timeout: 10s
-      retries: 15
-      start_period: 90s
-
   bot:
     build: .
     container_name: italian-bot
     env_file:
       - .env
-    environment:
-      - OLLAMA_HOST=http://ollama:11434
-    depends_on:
-      ollama:
-        condition: service_healthy
     restart: unless-stopped
-    mem_limit: 512m
-
-volumes:
-  ollama_data:

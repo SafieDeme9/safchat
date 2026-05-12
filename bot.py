@@ -2,9 +2,9 @@
 import random
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
-from config import DEBUG
+from config import DEBUG, DEEPSEEK_API_KEY
 from proverbs import Proverbs
-from ai import Ollama
+from ai import Ollama, DeepSeek
 
 # Learning tips
 TIPS = {
@@ -33,11 +33,15 @@ TIPS = {
 class ItalianBot:
     def __init__(self):
         self.proverbs = Proverbs()
-        self.ai = Ollama()
+        if DEEPSEEK_API_KEY:
+            self.ai = DeepSeek()
+        else:
+            self.ai = Ollama()
         self.user_lang = {}
         
         if DEBUG:
             print("🤖 Bot initialized")
+            print(f"   AI backend: {self.ai.provider}")
             print(f"   Proverbs: {len(self.proverbs.items)} loaded")
             print(f"   AI ready: {self.ai.ready}")
     
@@ -47,7 +51,10 @@ class ItalianBot:
             InlineKeyboardButton("🇫🇷 Français", callback_data='lang_fr')
         ]]
         
-        status = "✅ AI ready" if self.ai.ready and self.ai.model_ready else "⏳ First request loads model (may take 2-3 min)..."
+        if self.ai.provider == 'deepseek':
+            status = "✅ AI ready" if self.ai.ready else "❌ API key missing"
+        else:
+            status = "✅ AI ready" if self.ai.ready and self.ai.model_ready else "⏳ First request loads model (may take 2-3 min)..."
         
         await update.message.reply_text(
             f"Ciao!{update.effective_user.first_name} 👋\n\n"
@@ -101,9 +108,13 @@ class ItalianBot:
         status_text = f"🤖 *Bot Status*\n\n"
         status_text += f"✅ Bot running\n"
         status_text += f"📚 Proverbs: {len(self.proverbs.items)}\n"
-        status_text += f"🧠 Ollama: {'✅ Online' if self.ai.ready else '❌ Offline'}\n"
-        status_text += f"📦 Model: {self.ai.model}\n"
-        status_text += f"📥 Model loaded: {'✅ Yes' if self.ai.model_ready else '⏳ Loading'}\n"
+        if self.ai.provider == 'deepseek':
+            status_text += f"🧠 DeepSeek API: {'✅ Connected' if self.ai.ready else '❌ Not configured'}\n"
+            status_text += f"📦 Model: {self.ai.model}\n"
+        else:
+            status_text += f"🧠 Ollama: {'✅ Online' if self.ai.ready else '❌ Offline'}\n"
+            status_text += f"📦 Model: {self.ai.model}\n"
+            status_text += f"📥 Model loaded: {'✅ Yes' if self.ai.model_ready else '⏳ Loading'}\n"
         
         user_id = update.effective_user.id
         if user_id in self.ai.conversation_history:

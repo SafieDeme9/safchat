@@ -1,15 +1,16 @@
-# ai.py - Complete with translation, conversation, and grammar correction
+# ai.py - Ollama (local) and DeepSeek API backends
 import time
 import requests
-from config import DEBUG, OLLAMA_HOST, MODEL_NAME
+from config import DEBUG, OLLAMA_HOST, MODEL_NAME, DEEPSEEK_API_KEY, DEEPSEEK_MODEL
 
 class Ollama:
     def __init__(self):
+        self.provider = 'ollama'
         self.host = OLLAMA_HOST
         self.model = MODEL_NAME
         self.ready = self._check()
         self.model_ready = self.ready and self._check_model()
-        self.conversation_history = {}  # Store conversations per user
+        self.conversation_history = {}
         
         if DEBUG:
             if self.ready:
@@ -161,3 +162,77 @@ class Ollama:
             print(f"📨 [{user_id}] {text[:80]}")
 
         return self.chat(user_msg, system, user_id)
+
+
+class DeepSeek:
+    def __init__(self):
+        self.provider = 'deepseek'
+        self.model = DEEPSEEK_MODEL
+        self.ready = bool(DEEPSEEK_API_KEY)
+        self.model_ready = self.ready
+        self.conversation_history = {}
+
+        if DEBUG:
+            if self.ready:
+                print(f"✅ DeepSeek API ready (model: {self.model})")
+            else:
+                print("⚠️ No DEEPSEEK_API_KEY set")
+
+    def _build_messages(self, text, user_language, user_id=None):
+        native = 'English' if user_language == 'en' else 'French'
+
+        system = (
+            "You are a friendly Italian language tutor. "
+            "If the user writes in English or French, translate their message to Italian. "
+            "If the user writes in Italian, correct any grammar mistakes gently "
+            "and reply naturally in Italian (1-2 sentences, ask a follow-up question). "
+            "Always respond in Italian only. Keep corrections brief and encouraging."
+        )
+
+        messages = [{"role": "system", "content": system}]
+
+        if user_id and user_id in self.conversation_history:
+            messages.extend(self.conversation_history[user_id][-10:])
+
+        user_msg = f"[The user's native language is {native}]\n\n{text}"
+        messages.append({"role": "user", "content": user_msg})
+        return messages, user_msg
+
+    def process_message(self, text, user_language='en', user_id=None):
+        if not self.ready:
+            return "❌ DeepSeek API key not configured. Set DEEPSEEK_API_KEY in .env"
+
+        from openai import OpenAI
+        client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
+
+        messages, user_msg = self._build_messages(text, user_language, user_id)
+
+        if DEBUG:
+            print(f"📨 [{user_id}] {text[:80]}")
+
+        start = time.time()
+        try:
+            response = client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=0.7,
+                max_tokens=300,
+            )
+            elapsed = time.time() - start
+            result = response.choices[0].message.content
+
+            if user_id:
+                if user_id not in self.conversation_history:
+                    self.conversation_history[user_id] = []
+                self.conversation_history[user_id].append({"role": "user", "content": user_msg})
+                self.conversation_history[user_id].append({"role": "assistant", "content": result})
+                if len(self.conversation_history[user_id]) > 20:
+                    self.conversation_history[user_id] = self.conversation_history[user_id][-20:]
+
+            if DEBUG:
+                result += f"\n\n⏱️ ({elapsed:.1f}s)"
+
+            return result
+
+        except Exception as e:
+            return f"❌ DeepSeek API error: {str(e)[:200]}"
